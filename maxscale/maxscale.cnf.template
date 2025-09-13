@@ -18,7 +18,7 @@ protocol=MariaDBBackend
 [MariaDB-Monitor]
 type=monitor
 module=mariadbmon
-servers=${MASTER_SERVER},${SLAVE_SERVER}
+servers=mariadb-master,mariadb-slave
 user=${MAXSCALE_USER}
 password=${MAXSCALE_PASS}
 monitor_interval=${MON_INTERVAL}
@@ -34,7 +34,7 @@ router_options=slave
 [Read-Write-Service]
 type=service
 router=readwritesplit
-servers=${MASTER_SERVER},${SLAVE_SERVER}
+servers=mariadb-master,mariadb-slave
 user=${MAXSCALE_USER}
 password=${MAXSCALE_PASS}
 
