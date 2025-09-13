@@ -1,4 +1,5 @@
-FROM mariadb/maxscale:24.02
+ARG MAXSCALE_VERSION
+FROM mariadb/maxscale:${MAXSCALE_VERSION}
 
 RUN dnf install gettext sudo -y \
   && dnf upgrade -y
