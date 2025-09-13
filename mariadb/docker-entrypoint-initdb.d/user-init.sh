@@ -1,0 +1,13 @@
+#!/bin/sh
+
+mariadb -u root -p$MARIADB_ROOT_PASSWORD <<EOF
+CREATE USER '$MAXSCALE_USER'@'%' IDENTIFIED BY '$MAXSCALE_PASS';
+GRANT SELECT ON mysql.user TO '$MAXSCALE_USER'@'%';
+GRANT SELECT ON mysql.db TO '$MAXSCALE_USER'@'%';
+GRANT SELECT ON mysql.tables_priv TO '$MAXSCALE_USER'@'%';
+GRANT SELECT ON mysql.columns_priv TO '$MAXSCALE_USER'@'%';
+GRANT SELECT ON mysql.procs_priv TO '$MAXSCALE_USER'@'%';
+GRANT SELECT ON mysql.proxies_priv TO '$MAXSCALE_USER'@'%';
+GRANT SELECT ON mysql.roles_mapping TO '$MAXSCALE_USER'@'%';
+GRANT SHOW DATABASES ON *.* TO '$MAXSCALE_USER'@'%';
+EOF

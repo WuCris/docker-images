@@ -1,0 +1,19 @@
+services:
+  mariadb-master:
+    image: wucris/mariadb
+    container_name: mariadb-master
+    ports:
+      - "127.0.0.1:3306:3306"
+    build:
+      context: .
+      args:
+      - MARIADB_VERSION=${MARIADB_VERSION}
+    environment:
+      MAXSCALE_USER:
+      MAXSCALE_PASS:
+      MARIADB_ROOT_PASSWORD:
+      MARIADB_USER:
+      MARIADB_PASSWORD:
+      MARIADB_DATABASE:
+      MARIADB_REPLICATION_USER:
+      MARIADB_REPLICATION_PASSWORD:
