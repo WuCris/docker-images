@@ -1,0 +1,22 @@
+services:
+  maxscale:
+    image: wucris/mariadb-maxscale:${MAXSCALE_VERSION}
+    container_name: maxscale
+    ports:
+      - "127.0.0.1:4008:4008"
+      - "127.0.0.1:4006:4006"
+      - "127.0.0.1:8989:8989"
+    build:
+      context: .
+      args:
+      - MAXSCALE_VERSION=${MAXSCALE_VERSION}
+    environment:
+      - SLAVE_HOST=3306
+      - SLAVE_PORT=3306
+      - MASTER_SERVER=mariadb-master
+      - SLAVE_SERVER=mariadb-slave
+      - MAXSCALE_USER=maxscale
+      - MAXSCALE_PASS=maxscale_pw
+      - MON_INTERVAL=2s
+      - LISTENING_PORT=3306
+      - MAXSCALE_VERSION=24.02
