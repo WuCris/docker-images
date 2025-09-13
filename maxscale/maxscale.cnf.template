@@ -27,8 +27,8 @@ monitor_interval=${MON_INTERVAL}
 type=service
 router=readconnroute
 servers=${SLAVE_SERVER}
-user=MAXSCALE_USER
-password=MAXSCALE_PASS
+user=${MAXSCALE_USER}
+password=${MAXSCALE_PASS}
 router_options=slave
 
 [Read-Write-Service]
