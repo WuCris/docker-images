@@ -26,7 +26,7 @@ monitor_interval=${MON_INTERVAL}
 [Read-Only-Service]
 type=service
 router=readconnroute
-servers=${SLAVE_SERVER}
+servers=mariadb-slave
 user=${MAXSCALE_USER}
 password=${MAXSCALE_PASS}
 router_options=slave
