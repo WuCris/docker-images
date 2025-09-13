@@ -1,6 +1,6 @@
 services:
   mariadb-master:
-    image: wucris/mariadb
+    image: wucris/mariadb:${MARIADB_VERSION}
     container_name: mariadb-master
     ports:
       - "127.0.0.1:3306:3306"
