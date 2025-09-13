@@ -1,7 +1,7 @@
 FROM mariadb/maxscale:24.02
 
 RUN dnf install gettext sudo -y \
-  && dnf upgrade
+  && dnf upgrade -y
 
 COPY scripts/custom-entrypoint.sh /usr/local/bin/
 COPY scripts/envsubst.sh /usr/local/bin/
