@@ -1,0 +1,42 @@
+services:
+  drupal-php:
+    image: wucris/drupal-php:${DRUPAL_VERSION}${PHP_VERSION} 
+    hostname: drupal-php
+    build:
+      context: php
+      args:
+        DRUPAL_VERSION:
+        DRUPAL_IMAGE:
+        PHP_VERSION:
+        NGINX_VERSION:
+    environment:
+      - MARIADB_DATABASE
+      - MARIADB_USER
+      - MARIADB_PASSWORD
+      - DATABASE_MASTER=drupal-mariadb-master
+      - DATABASE_SLAVE=drupal-mariadb-slave
+      - URL=example.com
+    volumes:
+      - drupal-files:/opt/drupal/web/sites/default/files
+
+  drupal-web:
+    image: wucris/drupal-web:${DRUPAL_VERSION}${PHP_VERSION}_${NGINX_VERSION}
+    hostname: drupal-web
+    build:
+      context: nginx
+      args:
+        DRUPAL_VERSION:
+        DRUPAL_IMAGE:
+        PHP_VERSION:
+        NGINX_VERSION:
+    environment:
+      NODE_ENV: production
+    ports:
+      - "8080:80"
+    volumes:
+      - drupal-files:/opt/drupal/web/sites/default/files
+    depends_on:
+      - drupal-php
+
+volumes:
+  drupal-files:
