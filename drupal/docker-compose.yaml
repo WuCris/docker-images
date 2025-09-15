@@ -16,7 +16,7 @@ services:
       - HASH_SALT
       - DATABASE_MASTER=drupal-mariadb-master
       - DATABASE_SLAVE=drupal-mariadb-slave
-      - URL=example.com
+      - SITE_URL=example.lan
     volumes:
       - drupal-files:/opt/drupal/web/sites/default/files
 
@@ -31,7 +31,8 @@ services:
         PHP_VERSION:
         NGINX_VERSION:
     environment:
-      NODE_ENV: production
+      NODE_ENV:
+      PHP_FPM_HOST:
     ports:
       - "8080:80"
     volumes:
