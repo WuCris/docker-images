@@ -3,5 +3,5 @@ resolver ${NGINX_LOCAL_RESOLVERS} valid=30s;
 
 upstream drupal-backend {
     hash $http_cookie;
-    server ${PHP_FPM_HOST}:9000;
+    server ${PHP_FPM_HOST}:9000 resolve;
 }
